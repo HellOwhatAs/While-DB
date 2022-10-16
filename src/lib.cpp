@@ -3,6 +3,7 @@
 #include <string.h>
 #include "lib.hpp"
 #include <pybind11/pybind11.h>
+#include <stdexcept>
 
 unsigned int build_nat(char * c, int len) {
   int s = 0, i = 0;
@@ -23,7 +24,7 @@ unsigned int build_nat(char * c, int len) {
 char * new_str(char * str, int len) {
   char * res = (char *) malloc(sizeof(char) * (len + 1));
   if (res == NULL) {
-    throw pybind11::value_error("Failure in malloc.");
+    throw std::exception("Failure in malloc.");
     //exit(0);
   }
   strcpy(res, str);
@@ -52,7 +53,7 @@ unsigned int hash_fun(char * str) {
 struct SLL_hash_table * init_SLL_hash() {
   struct SLL_hash_table * res = (struct SLL_hash_table *) malloc(sizeof(struct SLL_hash_table));
   if (res == NULL) {
-    throw pybind11::value_error("Failure in malloc.\n");
+    throw std::exception("Failure in malloc.\n");
     //exit(0);
   }
   memset(res, 0, sizeof(struct SLL_hash_table));
@@ -83,7 +84,7 @@ void SLL_hash_set(struct SLL_hash_table * t, char * key, long long value) {
   }
   * d = (struct SLL_hash_cell *) malloc(sizeof (struct SLL_hash_cell));
   if (* d == NULL) {
-    throw pybind11::value_error("Failure in malloc.\n");
+    throw std::exception("Failure in malloc.\n");
     //exit(0);
   }
   (* d) -> key = new_str(key, strlen(key));

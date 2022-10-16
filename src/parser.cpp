@@ -1947,9 +1947,10 @@ yyreturn:
 /* Line 2055 of yacc.c  */
 #line 184 "lang.y"
 
-#include <pybind11/pybind11.h>
+#include <stdexcept>
+#include <string>
 void yyerror(const char* s)
 {
     //fprintf(stderr , "%s\n",s);
-    throw pybind11::value_error("syntax error");
+    throw std::exception((std::string("syntax error ")+yytext).c_str());
 }

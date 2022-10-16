@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lang.hpp"
+#include <stdexcept>
 
 struct expr * new_expr_ptr() {
   struct expr * res = (struct expr *) malloc(sizeof(struct expr));
   if (res == NULL) {
-    printf("Failure in malloc.\n");
-    exit(0);
+    //printf("Failure in malloc.\n");
+    //exit(0);
+      throw std::exception("Failure in malloc.");
   }
   return res;
 }
@@ -15,8 +17,9 @@ struct expr * new_expr_ptr() {
 struct cmd * new_cmd_ptr() {
   struct cmd * res = (struct cmd *) malloc(sizeof(struct cmd));
   if (res == NULL) {
-    printf("Failure in malloc.\n");
-    exit(0);
+    //printf("Failure in malloc.\n");
+    //exit(0);
+      throw std::exception("Failure in malloc.");
   }
   return res;
 }

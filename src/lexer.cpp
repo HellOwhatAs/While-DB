@@ -1057,7 +1057,7 @@ YY_RULE_SETUP
 case 35:
 YY_RULE_SETUP
 #line 146 "lang.l"
-{printf("%s",yytext);
+{//printf("%s",yytext);
      return -1; }
 	YY_BREAK
 case 36:

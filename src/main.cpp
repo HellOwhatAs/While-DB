@@ -5,6 +5,7 @@
 #include "interpreter.hpp"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <stdexcept>
 namespace py = pybind11;
 extern struct cmd* root;
 int yyparse();
@@ -25,20 +26,20 @@ PYBIND11_MODULE(_WhileDB, m) {
 		if (exec_to_end)while (!test_end(r))step(r);
 	}, py::arg("src"), py::arg("exec_to_end") = true);
 	m.def("end", []() {
-		if (no_program)throw py::value_error("no program loaded");
+		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
 		if (r == NULL)return true;
 		return (bool)test_end(r); 
 	});
 	m.def("step", []() {
-		if (no_program)throw py::value_error("no program loaded");
-		if (r == NULL)throw py::value_error("no more step");
+		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
+		if (r == NULL)throw std::exception("no program loaded");//py::value_error("no more step");
 		step(r); 
 	});
 	m.def("get_globals", []() {return globals; });
 	m.def("update_globals", [](const std::unordered_map<std::string, long long int>& d) {for (auto& i : d)globals[i.first] = i.second; });
 	m.def("clear_globals", []() {globals.clear(); });
 	m.def("to_end", []() {
-		if (no_program)throw py::value_error("no program loaded");
+		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
 		while (!test_end(r))step(r);
 	});
 }

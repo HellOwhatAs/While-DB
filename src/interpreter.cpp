@@ -2,6 +2,7 @@
 #include "lang.hpp"
 #include "interpreter.hpp"
 #include <pybind11/pybind11.h>
+#include <stdexcept>
 struct cont_list {
   struct cmd * c;
   struct cont_list * link;
@@ -29,8 +30,9 @@ void free_cont_list(struct cont_list* cl) {
 struct res_prog * new_res_prog_ptr() {
   struct res_prog * res = (struct res_prog *) malloc(sizeof(struct res_prog));
   if (res == NULL) {
-    printf("Failure in malloc.\n");
-    exit(0);
+    //printf("Failure in malloc.\n");
+    throw std::exception("Failure in malloc.");
+    //exit(0);
   }
   return res;
 }
@@ -38,8 +40,9 @@ struct res_prog * new_res_prog_ptr() {
 struct cont_list * new_cont_list_ptr() {
   struct cont_list * res = (struct cont_list *) malloc(sizeof(struct cont_list));
   if (res == NULL) {
-    printf("Failure in malloc.\n");
-    exit(0);
+    //printf("Failure in malloc.\n");
+    throw std::exception("Failure in malloc.");
+    //exit(0);
   }
   return res;
 }
@@ -135,7 +138,9 @@ long long eval(struct expr * e) {
     if (arg_val % 8 != 0) {
       arg_val = (arg_val | 7) + 1;
     }
-    return (long long) malloc(arg_val);
+    auto tmp = malloc(arg_val);
+    if (tmp == NULL)throw std::exception("Failure in malloc.");
+    return (long long)tmp;
   }
   case T_RI: {
     long long res;
@@ -180,8 +185,9 @@ void step(res_prog * r) {
         break;
       }
       default:
-        printf("error!\n");
-        exit(0);
+        //printf("error!\n");
+        //exit(0);
+          throw std::exception("assigning to unassignable expression");
       }
       r -> foc = NULL;
       break;
