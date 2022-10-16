@@ -14,7 +14,11 @@ wd.load_program("""
 write_int(ret);
 write_char(10);
 while n>0 do{
-    ret2=ret2*n;
+    if n%2 then {
+        ret2=ret2*n
+    } else {
+        ret2=-ret2*n
+    };
     n=n-1
 }
 """)
