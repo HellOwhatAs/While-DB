@@ -1,12 +1,12 @@
 import WhileDB as wd
-wd.update_globals({"n1":1234,"n2":5678})
+wd.Globals().update({"n1":1234,"n2":5678})
 wd.load_program("""
 addr=malloc(16);
 *addr=n1;
 *(addr+8)=n2
 """)
-addr=wd.get_globals()["addr"]
-wd.clear_globals()
+addr=wd.Globals()["addr"]
+wd.Globals().clear()
 del wd
 
 import ctypes

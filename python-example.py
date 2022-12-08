@@ -1,14 +1,14 @@
 import WhileDB as wd
-wd.update_globals({"n":20,"ret":1})
+wd.Globals().update({"n":20,"ret":1})
 wd.load_program("""
 while n>0 do{
     ret=ret*n;
     n=n-1
 }
 """)
-print(wd.get_globals()["ret"])
+print(wd.Globals()["ret"])
 
-wd.update_globals({"n":35,"ret2":1})
+wd.Globals().update({"n":35,"ret2":1})
 
 wd.load_program("""
 write_int(ret);
@@ -23,4 +23,4 @@ while n>0 do{
 }
 """)
 
-print(wd.get_globals())
+print(wd.Globals())
