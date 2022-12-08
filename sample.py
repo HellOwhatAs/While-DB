@@ -7,7 +7,7 @@ m = n + 1;
 write_int(m + 2);
 write_char(10)
 """)
-wd.clear_globals()
+wd.Globals().clear()
 
 print("sample_src01 :")
 wd.load_program("""
@@ -41,7 +41,7 @@ else {
   write_char(10)
 }
 """)
-wd.clear_globals()
+wd.Globals().clear()
 
 print("sample_src02 :")
 wd.load_program("""
@@ -55,7 +55,7 @@ while (i < n) do {
 write_int(s);
 write_char(10)
 """)
-wd.clear_globals()
+wd.Globals().clear()
 
 print("sample_src03 :")
 wd.load_program("""
@@ -69,6 +69,6 @@ else {
 };
 write_char(10)
 """)
-wd.clear_globals()
+wd.Globals().clear()
 
 print("Well Done !")

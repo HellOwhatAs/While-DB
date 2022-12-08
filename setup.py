@@ -6,7 +6,7 @@ setup(
     python_requires='==3.8.*',
     description="WhileDB language intepreter intrduced on SJTU CS2612.",
     url="https://github.com/HellOwhatAs/While-DB",
-    version="0.0.1",
+    version="0.0.2",
     packages=['WhileDB'],
     author="HellOwhatAs",
     license="MIT",

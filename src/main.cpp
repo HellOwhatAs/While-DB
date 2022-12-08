@@ -5,11 +5,13 @@
 #include "interpreter.hpp"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <pybind11/stl_bind.h>
 #include <stdexcept>
 namespace py = pybind11;
 extern struct cmd* root;
 int yyparse();
 
+PYBIND11_MAKE_OPAQUE(std::unordered_map<std::string, long long int>);
 std::unordered_map<std::string, long long int> globals;
 res_prog* r=NULL;
 bool no_program = true;
@@ -35,9 +37,8 @@ PYBIND11_MODULE(_WhileDB, m) {
 		if (r == NULL)throw std::exception("no program loaded");//py::value_error("no more step");
 		step(r); 
 	});
-	m.def("get_globals", []() {return globals; });
-	m.def("update_globals", [](const std::unordered_map<std::string, long long int>& d) {for (auto& i : d)globals[i.first] = i.second; });
-	m.def("clear_globals", []() {globals.clear(); });
+	py::bind_map<std::unordered_map<std::string, long long int>>(m, "Unordered_MapStringInt");
+	m.def("Globals", [](){return &globals;}, py::return_value_policy::reference);
 	m.def("to_end", []() {
 		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
 		while (!test_end(r))step(r);
