@@ -31,7 +31,7 @@ struct res_prog * new_res_prog_ptr() {
   struct res_prog * res = (struct res_prog *) malloc(sizeof(struct res_prog));
   if (res == NULL) {
     //printf("Failure in malloc.\n");
-    throw std::exception("Failure in malloc.");
+    throw std::logic_error("Failure in malloc.");
     //exit(0);
   }
   return res;
@@ -41,7 +41,7 @@ struct cont_list * new_cont_list_ptr() {
   struct cont_list * res = (struct cont_list *) malloc(sizeof(struct cont_list));
   if (res == NULL) {
     //printf("Failure in malloc.\n");
-    throw std::exception("Failure in malloc.");
+    throw std::logic_error("Failure in malloc.");
     //exit(0);
   }
   return res;
@@ -139,7 +139,7 @@ long long eval(struct expr * e) {
       arg_val = (arg_val | 7) + 1;
     }
     auto tmp = malloc(arg_val);
-    if (tmp == NULL)throw std::exception("Failure in malloc.");
+    if (tmp == NULL)throw std::logic_error("Failure in malloc.");
     return (long long)tmp;
   }
   case T_RI: {
@@ -187,7 +187,7 @@ void step(res_prog * r) {
       default:
         //printf("error!\n");
         //exit(0);
-          throw std::exception("assigning to unassignable expression");
+          throw std::logic_error("assigning to unassignable expression");
       }
       r -> foc = NULL;
       break;

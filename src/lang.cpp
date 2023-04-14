@@ -9,7 +9,7 @@ struct expr * new_expr_ptr() {
   if (res == NULL) {
     //printf("Failure in malloc.\n");
     //exit(0);
-      throw std::exception("Failure in malloc.");
+      throw std::logic_error("Failure in malloc.");
   }
   return res;
 }
@@ -19,7 +19,7 @@ struct cmd * new_cmd_ptr() {
   if (res == NULL) {
     //printf("Failure in malloc.\n");
     //exit(0);
-      throw std::exception("Failure in malloc.");
+      throw std::logic_error("Failure in malloc.");
   }
   return res;
 }

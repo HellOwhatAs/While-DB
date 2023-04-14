@@ -28,19 +28,19 @@ PYBIND11_MODULE(_WhileDB, m) {
 		if (exec_to_end)while (!test_end(r))step(r);
 	}, py::arg("src"), py::arg("exec_to_end") = true);
 	m.def("end", []() {
-		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
+		if (no_program)throw std::logic_error("no program loaded");//py::value_error("no program loaded");
 		if (r == NULL)return true;
 		return (bool)test_end(r); 
 	});
 	m.def("step", []() {
-		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
-		if (r == NULL)throw std::exception("no program loaded");//py::value_error("no more step");
+		if (no_program)throw std::logic_error("no program loaded");//py::value_error("no program loaded");
+		if (r == NULL)throw std::logic_error("no program loaded");//py::value_error("no more step");
 		step(r); 
 	});
 	py::bind_map<std::unordered_map<std::string, long long int>>(m, "Unordered_MapStringInt");
 	m.def("Globals", [](){return &globals;}, py::return_value_policy::reference);
 	m.def("to_end", []() {
-		if (no_program)throw std::exception("no program loaded");//py::value_error("no program loaded");
+		if (no_program)throw std::logic_error("no program loaded");//py::value_error("no program loaded");
 		while (!test_end(r))step(r);
 	});
 }

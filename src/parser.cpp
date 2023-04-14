@@ -1952,5 +1952,5 @@ yyreturn:
 void yyerror(const char* s)
 {
     //fprintf(stderr , "%s\n",s);
-    throw std::exception((std::string("syntax error ")+yytext).c_str());
+    throw std::logic_error((std::string("syntax error ")+yytext).c_str());
 }
