@@ -1,19 +1,24 @@
-from setuptools import setup
+__version__ = "0.0.3"
 
+from glob import glob
+from setuptools import setup
+from pybind11.setup_helpers import Pybind11Extension, build_ext
+
+ext_modules = [
+    Pybind11Extension(
+        "WhileDB._WhileDB",
+        sorted(glob("src/*.cpp")),
+    ),
+]
 
 setup(
     name="WhileDB",
-    python_requires='==3.8.*',
-    description="WhileDB language intepreter intrduced on SJTU CS2612.",
-    url="https://github.com/HellOwhatAs/While-DB",
-    version="0.0.2",
-    packages=['WhileDB'],
+    version=__version__,
     author="HellOwhatAs",
-    license="MIT",
-    include_package_data=True,
-    platforms=['windows'],
-    classifiers=[
-        'Operating System :: Microsoft :: Windows',
-        'Programming Language :: Python :: 3.8',
-    ],
+    url="https://github.com/HellOwhatAs/While-DB",
+    description="WhileDB language intepreter intrduced on SJTU CS2612.",
+    ext_modules=ext_modules,
+    packages=['WhileDB'],
+    cmdclass={"build_ext": build_ext},
+    zip_safe=False,
 )
