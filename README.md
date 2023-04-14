@@ -2,7 +2,8 @@
 CS2612 Attachment 1014
 
 # Online Demo
-https://hellowhatas-whiledb-demo.hf.space/
+https://hellowhatas-whiledb-demo.hf.space/  
+**Note that `write_int`, `write_char`, `read_int`, `read_char` not avaliable in this demo**
 ![image](https://user-images.githubusercontent.com/88815487/232006322-9eb04400-9c97-4c40-92eb-290a9d7f13fa.png)
 
 # Install
