@@ -19,6 +19,9 @@ setup(
     description="WhileDB language intepreter intrduced on SJTU CS2612.",
     ext_modules=ext_modules,
     packages=['WhileDB'],
+    package_data = {
+        'WhileDB': ['*.pyi'],
+    },
     cmdclass={"build_ext": build_ext},
     zip_safe=False,
 )
