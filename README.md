@@ -12,7 +12,11 @@ https://hellowhatas-whiledb-demo.hf.space/
 pip install git+https://github.com/HellOwhatAs/While-DB.git
 ```
 ## Windows
-pre-compiled wheel only for python3.8 on win64:
-```text
-pip install WhileDB
-```
+- pre-compiled wheel only avaliable for python3.8 on win64
+  ```text
+  pip install WhileDB
+  ```
+- build from source (requires [MSVC](https://visualstudio.microsoft.com/))
+  ```text
+  pip install git+https://github.com/HellOwhatAs/While-DB.git
+  ```
