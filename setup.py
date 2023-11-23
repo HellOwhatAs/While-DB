@@ -4,7 +4,7 @@ from glob import glob
 from setuptools import setup
 
 import sys
-print(sys.executable)
+raise (sys.executable)
 
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 
