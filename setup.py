@@ -3,9 +3,9 @@ __version__ = "0.0.3"
 from glob import glob
 from setuptools import setup
 try:
-    from pybind11.setup_helpers import Pybind11Extension, build_ext
+    from pybind11.setup_helpers import Pybind11Extension
 except ImportError:
-    from setuptools import Extension as Pybind11Extension, build_ext
+    from setuptools import Extension as Pybind11Extension
 
 ext_modules = [
     Pybind11Extension(
@@ -26,6 +26,5 @@ setup(
         'WhileDB': ['*.pyi'],
     },
     setup_requires=["pybind11"],
-    cmdclass={"build_ext": build_ext},
     zip_safe=False,
 )
