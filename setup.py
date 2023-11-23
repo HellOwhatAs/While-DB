@@ -25,6 +25,7 @@ setup(
     package_data = {
         'WhileDB': ['*.pyi'],
     },
+    setup_requires=["pybind11"],
     cmdclass={"build_ext": build_ext},
     zip_safe=False,
 )
