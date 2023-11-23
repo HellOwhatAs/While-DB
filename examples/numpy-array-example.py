@@ -13,3 +13,4 @@ while i<l do{
 """)
 
 print(arr)
+help(wd)
